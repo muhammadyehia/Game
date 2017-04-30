@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AppSetting } from '../config/index'
 import { IUser } from '../entities/index'
-import { Http, Response } from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
 @Injectable()
@@ -12,7 +12,10 @@ export class LoginService {
     }
     private _currentUser: IUser
     public Login(userName: string) {
-        return this._http.post(AppSetting.BaseApiUrl + AppSetting.LoginUrl, JSON.stringify({ userName: userName }))
+        let body = JSON.stringify({ Name: userName });
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+        return this._http.post(AppSetting.BaseApiUrl + AppSetting.LoginUrl, body, options)
             .map((response: Response) => {
                 let user: IUser = <IUser>response.json();
                 if (user) {
