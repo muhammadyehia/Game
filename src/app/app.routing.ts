@@ -18,10 +18,6 @@ const appRoutes: Routes = [
         component: GameListComponent
     },
     {
-        path: 'detail',
-        component: GameCommentRateComponent
-    },
-    {
         path: '', redirectTo: '/welcome', pathMatch: 'full'
     }
 ];

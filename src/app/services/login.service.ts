@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AppSetting } from '../config/index'
-import { IUser } from '../entities/index'
+import { IUser } from '../interfaces/index'
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
