@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
-import { AppSetting } from '../config'
-import { IUser } from '../entities'
+import { AppSetting } from '../config/index'
+import { IUser } from '../entities/index'
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
 @Injectable()
 export class LoginService {
 
-    constructor(private _http: Http, private _currentUser: IUser) {
+    constructor(private _http: Http) {
         this._currentUser = undefined;
     }
+    private _currentUser: IUser
     public Login(userName: string) {
         return this._http.post(AppSetting.BaseApiUrl + AppSetting.LoginUrl, JSON.stringify({ userName: userName }))
             .map((response: Response) => {

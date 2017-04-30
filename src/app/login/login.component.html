@@ -1,0 +1,11 @@
+<div class="login-page" (keydown)="OnPressEnter($event)">
+  <div class="form" >
+      <input type="text" [(ngModel)]="UserName" name="username" id="username" autofocus placeholder="User Name" />
+       <div [hidden]="Submit" 
+             class="alert alert-danger">
+          User Name is required
+        </div>
+      
+      <button  (click)="Login()" >login</button>
+  </div>
+</div>
