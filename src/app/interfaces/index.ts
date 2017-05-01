@@ -1,4 +1,7 @@
 export * from './user'
 export * from './game'
+export * from './filter'
 export * from './userCommentWithRate'
-export * from './gamesCommentsWithUser'
+export * from './gameCommentsWithUser'
+export * from './filteredGamesCommentsWithUser'
+

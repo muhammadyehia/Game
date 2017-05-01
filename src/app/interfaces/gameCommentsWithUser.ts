@@ -1,7 +1,7 @@
 import { IGame } from './game'
 import { IUserCommentWithRate } from './userCommentWithRate'
 
-export interface IGamesCommentsWithUser {
+export interface IGameCommentsWithUser {
     Game: IGame,
-    UsersCommentsWithRate: IUserCommentWithRate
+    UsersCommentsWithRate: IUserCommentWithRate[]
 }
