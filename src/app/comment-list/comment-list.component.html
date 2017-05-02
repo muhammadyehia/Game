@@ -1,0 +1,15 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default head">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Comments</h3>
+                </div>
+                <div class="panel-body">
+                    <comment *ngFor="let item of CommentsWithUser" [CommentWithUser]='item'>
+                    </comment>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

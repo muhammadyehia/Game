@@ -6,25 +6,29 @@
                     <h3 class="panel-title">Game Information</h3>
                 </div>
                 <div class="panel-body">
-                    
+
                     <div class="gameInfo clear">
-                         Name
+                        Name
                     </div>
                     <div class="gameInfo">
                         {{GameCommentsWithUser?.Game?.Name}}
                     </div>
 
                     <div class="gameInfo clear">
-                         Over All Rate
+                        Over All Rate
                     </div>
                     <div class="gameInfo">
                         {{GameCommentsWithUser?.Game?.OverAllRate}}
                     </div>
-                      <div class="gameInfo">
+                    <div class="gameInfo">
                         Total Number Of Votes
                     </div>
                     <div class="gameInfo">
                         {{GameCommentsWithUser?.Game?.NumberOfVotes}}
+                    </div>
+                    <div class="clear">
+                        <comment-list [CommentsWithUser]='GameCommentsWithUser?.UsersCommentsWithRate' >
+                        </comment-list>
                     </div>
                 </div>
             </div>
