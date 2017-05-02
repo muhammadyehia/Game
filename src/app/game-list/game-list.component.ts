@@ -25,6 +25,7 @@ export class GameListComponent implements OnInit {
     public GetFilteredGamesCommentsAndRates(filter: IFilter) {
         this._gameService.GetFilteredGamesCommentsAndRates(filter).subscribe((filteredGamesCommentsWithUser: IFilteredGamesCommentsWithUser) => {
             this.FilteredGamesCommentsWithUser = filteredGamesCommentsWithUser;
+        
         },
             error => {
                 console.log(error);

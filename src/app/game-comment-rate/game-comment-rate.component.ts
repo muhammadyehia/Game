@@ -11,5 +11,7 @@ import { IGameCommentsWithUser } from '../interfaces/index'
 export class GameCommentRateComponent implements OnInit {
     constructor( ) { }
     @Input() GameCommentsWithUser: IGameCommentsWithUser
-    ngOnInit() { }
+    ngOnInit() {
+      
+     }
 }
