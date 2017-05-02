@@ -3,12 +3,12 @@ import { LoginService } from '../services/index'
 import { IGameCommentsWithUser } from '../interfaces/index'
 @Component({
     moduleId: module.id,
-    selector: 'game-comment-rate',
-    templateUrl: 'game-comment-rate.component.html',
-    styleUrls:['game-comment-rate.component.css']
+    selector: 'game',
+    templateUrl: 'game.component.html',
+    styleUrls:['game.component.css']
 })
 
-export class GameCommentRateComponent implements OnInit {
+export class GameComponent implements OnInit {
     constructor( ) { }
     @Input() GameCommentsWithUser: IGameCommentsWithUser
     ngOnInit() {
