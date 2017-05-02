@@ -36,11 +36,11 @@ export class LoginComponent implements OnInit {
             this._loginService.Logout();
             this._loginService.Login(this.UserName).subscribe(
                 () => {
-                let link = ['/games'];
-                this._router.navigate(link);
+                    let link = ['/games'];
+                    this._router.navigate(link);
                 },
                 error => {
-console.log(error);
+                    console.log(error);
                 });
         }
 
