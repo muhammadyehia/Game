@@ -1,4 +1,4 @@
-export interface Icomment {
+export interface IComment {
     GameId: number,
     UserId:number
     Comment: string,

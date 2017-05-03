@@ -34,5 +34,7 @@ export class GameListComponent implements OnInit {
 
     }
 
+  
+
 
 }

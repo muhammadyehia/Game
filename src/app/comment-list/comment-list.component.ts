@@ -1,64 +1,25 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { IUserCommentWithRate, Icomment, IUser } from '../interfaces/index'
-import { LoginService, CommentService } from '../services/index';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { IUserCommentWithRate, IComment, IUser } from '../interfaces/index'
 @Component({
     moduleId: module.id,
     selector: 'comment-list',
     templateUrl: 'comment-list.component.html',
-    styleUrls: ['comment-list.component.css'],
-    providers: [CommentService]
+    styleUrls: ['comment-list.component.css']
 })
 
-export class CommentListComponent implements OnInit {
-    constructor(private _loginService: LoginService, private _commentService: CommentService) { }
-    public Comment: string;
-    public TitleBorderStyle: string = "";
-    private _currentUser: IUser;
-    public ShowAddComment: boolean = true;
+export class CommentListComponent implements OnInit, OnChanges {
+    constructor() { }
     @Input() CommentsWithUser: IUserCommentWithRate[]
-    @Input() GameId: number
+    public FilterdCommentsWithUser: IUserCommentWithRate[]
     ngOnInit() {
-        this._currentUser = this._loginService.GetCurrentLoginUser();
-        this.AllowAddComment();
+        this.FilterComments();
     }
-    private AllowAddComment() {
-
-            let result: boolean = this._currentUser ? true : false;
-            if (result) {
-                result = this.CommentsWithUser.some((item: IUserCommentWithRate) => {
-                    return item.UserName === this._currentUser.Name;
-                });
-            }
-            this.ShowAddComment = !result;
-        
+    private FilterComments() {
+        this.FilterdCommentsWithUser = this.CommentsWithUser.filter((item: IUserCommentWithRate) => {
+            return item.Comment;
+        });
     }
-    AddComment() {
-        if (this._currentUser && this.GameId) {
-            if (this.Comment) {
-                this.TitleBorderStyle = "";
-                let userComment: Icomment = {
-                    Comment: this.Comment,
-                    UserId: this._currentUser.Id,
-                    GameId: this.GameId
-                };
-                this._commentService.AddComment(userComment).subscribe(
-                    () => {
-                        let addedComment: IUserCommentWithRate = {
-                            Comment: this.Comment,
-                            UserName: this._currentUser.Name
-                        }
-                        this.CommentsWithUser.push(addedComment);
-                        this.Comment = "";
-                        this.ShowAddComment=false;
-                    },
-                    error => {
-                        console.log(error);
-                    });
-            }
-            else {
-                this.TitleBorderStyle = "rgb(252, 88, 85)";
-            }
-        }
+    ngOnChanges() {
+        this.FilterComments();
     }
-
 }

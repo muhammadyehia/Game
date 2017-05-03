@@ -7,11 +7,13 @@ import { LoginComponent, WelcomeComponent, GameListComponent, routing } from './
 import { GameComponent } from './game/index';
 import { CommentListComponent } from './comment-list/index';
 import { CommentComponent } from './comment/index';
+import { RateComponent } from './rate/index';
+import { RemoveEmptyCommentPipe } from './pipes/index';
 import { AppComponent } from './app.component';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, routing, HttpModule],
-  declarations: [AppComponent, LoginComponent, WelcomeComponent, GameListComponent, GameComponent,CommentListComponent,CommentComponent],
+  declarations: [AppComponent, LoginComponent, WelcomeComponent, GameListComponent, GameComponent,CommentListComponent,CommentComponent,RateComponent,RemoveEmptyCommentPipe],
   bootstrap: [AppComponent],
   providers: [LoginService]
 })

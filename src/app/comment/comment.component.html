@@ -1,14 +1,8 @@
-<div class="container-fluid">
-  <div class="row">
-  <div class="col-sm-3 title">
-   <ul>
-     <li>
-        {{CommentWithUser?.UserName}}
-     </li>
-   </ul>
-</div>
-<div class="col-sm-9 body">
-    {{CommentWithUser?.Comment}}
-</div>
+<div class="col-md-12">
+  <div class="col-md-8">
+    <input type="text" class="form-control" [(ngModel)]="Comment" [style.border-color]='TitleBorderStyle' placeholder="New Comment">
+  </div>
+  <div class="comment-div col-md-3">
+    <button type="button" class="comment-button" (click)="AddComment()">Add</button>
   </div>
 </div>

@@ -11,20 +11,20 @@
                         Name
                     </div>
                     <div class="gameInfo">
-                        {{GameCommentsWithUser?.Game?.Name}}
+                        {{Game?.Name}}
                     </div>
 
                     <div class="gameInfo clear">
                         Over All Rate
                     </div>
                     <div class="gameInfo">
-                        {{GameCommentsWithUser?.Game?.OverAllRate}}
+                        {{Game?.OverAllRate}}
                     </div>
                     <div class="gameInfo">
                         Total Number Of Votes
                     </div>
                     <div class="gameInfo">
-                        {{GameCommentsWithUser?.Game?.NumberOfVotes}}
+                        {{Game?.NumberOfVotes}}
                     </div>
                     <div class="clear">
                         <div class="comment-buttom">
@@ -32,8 +32,27 @@
                         </div>
                     </div>
                     <div class="clear" *ngIf="AllowShowComments">
-                        <comment-list [CommentsWithUser]='GameCommentsWithUser?.UsersCommentsWithRate' [GameId]='GameCommentsWithUser?.Game?.Id'>
-                        </comment-list>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="panel panel-default head">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title">Comments</h3>
+                                        </div>
+                                        <div class="panel-body">
+                                            <comment-list [CommentsWithUser]='UsersCommentsWithRate' ></comment-list>
+                                            <div *ngIf="ShowAddComment">
+                                                <comment (onComment)='AddComment($event)'> </comment>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear col-md-5 col-md-offset-4" *ngIf="AllowShowRate">
+                        <rate [rate]='0' (rateClick)='onRatingClicked($event)'></rate>
                     </div>
                 </div>
             </div>
