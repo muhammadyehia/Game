@@ -1,3 +1,24 @@
 .head{
-    margin-top:5%;
+    margin-top:3%;
+}
+
+.comment-div{
+     z-index: 1;
+     float: left;
+}
+.comment-button
+{  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #4CAF50;
+  width: 65%;
+  height:  35px;
+  border: 0;
+  padding: 10px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }

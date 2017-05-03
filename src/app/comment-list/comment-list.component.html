@@ -8,7 +8,16 @@
                 <div class="panel-body">
                     <comment *ngFor="let item of CommentsWithUser" [CommentWithUser]='item'>
                     </comment>
+                    <div class="col-md-12" *ngIf="ShowAddComment">
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" [(ngModel)]="Comment"  [style.border-color]='TitleBorderStyle' placeholder="New Comment">
+                        </div>
+                        <div class="comment-div col-md-3">
+                            <button type="button" class="comment-button" (click)="AddComment()">Add</button>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>

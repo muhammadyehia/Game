@@ -27,7 +27,12 @@
                         {{GameCommentsWithUser?.Game?.NumberOfVotes}}
                     </div>
                     <div class="clear">
-                        <comment-list [CommentsWithUser]='GameCommentsWithUser?.UsersCommentsWithRate' [GameId]='GameCommentsWithUser?.Game?.Id' >
+                        <div class="comment-buttom">
+                            <button type="button" class="button" (click)="ShowHideComments()">{{AllowShowComments? 'Hide' : 'Show' }} Comments</button>
+                        </div>
+                    </div>
+                    <div class="clear" *ngIf="AllowShowComments">
+                        <comment-list [CommentsWithUser]='GameCommentsWithUser?.UsersCommentsWithRate' [GameId]='GameCommentsWithUser?.Game?.Id'>
                         </comment-list>
                     </div>
                 </div>
