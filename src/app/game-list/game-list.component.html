@@ -1,6 +1,8 @@
+<game *ngFor="let item of FilteredGamesCommentsWithUser?.GamesCommentsWithUser" [GameCommentsWithUser]='item'>
+</game>
 
-
-    <game  *ngFor="let item of FilteredGamesCommentsWithUser?.GamesCommentsWithUser" [GameCommentsWithUser]='item'>
-    </game>
-
-
+<div class="col-md-8 col-md-offset-4">
+    <ng-pagination [totalItems]="TotalItems" [currentPage]="CurrentPage" [pageSize]="PageSize" (pageChange)="onPageChange($event)"
+        previous-text="&lsaquo;" next-text="&rsaquo;" first-text="First" last-text="Last">
+    </ng-pagination>
+</div>
