@@ -12,7 +12,7 @@ import { IGameCommentsWithUser, IUser, IRate, IUserCommentWithRate, IComment, IG
 export class GameComponent implements OnInit {
     constructor(private _loginService: LoginService, private _rateService: RateService, private _commentService: CommentService) { }
     @Input() GameCommentsWithUser: IGameCommentsWithUser;
-    public UsersCommentsWithRate: IUserCommentWithRate[];
+   public FilterdCommentsWithUser: IUserCommentWithRate[]
     public Game: IGame;
     private _currentUser: IUser;
     public AllowShowComments: boolean = false;
@@ -20,7 +20,9 @@ export class GameComponent implements OnInit {
     public ShowAddComment: boolean = true;
     ngOnInit() {
         this._currentUser = this._loginService.GetCurrentLoginUser();
-        this.UsersCommentsWithRate = this.GameCommentsWithUser.UsersCommentsWithRate;
+        this.FilterdCommentsWithUser = this.GameCommentsWithUser.UsersCommentsWithRate.filter((item: IUserCommentWithRate) => {
+            return item.Comment;
+        });
         this.Game = this.GameCommentsWithUser.Game;
         this.AllowAddComment();
         this.AllowAddRate();
@@ -32,7 +34,7 @@ export class GameComponent implements OnInit {
 
         let result: boolean = this._currentUser ? true : false;
         if (result) {
-            result = this.UsersCommentsWithRate.some((item: IUserCommentWithRate) => {
+            result = this.GameCommentsWithUser.UsersCommentsWithRate.some((item: IUserCommentWithRate) => {
                 return (item.UserName === this._currentUser.Name && item.Comment !== "" && item.Comment !== null && item.Comment !== undefined);
             });
         }
@@ -42,7 +44,7 @@ export class GameComponent implements OnInit {
 
         let result: boolean = this._currentUser ? true : false;
         if (result) {
-            result = this.UsersCommentsWithRate.some((item: IUserCommentWithRate) => {
+            result = this.GameCommentsWithUser.UsersCommentsWithRate.some((item: IUserCommentWithRate) => {
                 return item.UserName === this._currentUser.Name && item.Rate > 0;
             });
         }
@@ -83,8 +85,7 @@ export class GameComponent implements OnInit {
                         Comment: comment,
                         UserName: this._currentUser.Name
                     }
-                    this.UsersCommentsWithRate.push(addedComment);
-                    this.UsersCommentsWithRate = JSON.parse(JSON.stringify(this.UsersCommentsWithRate));;
+                    this.FilterdCommentsWithUser.push(addedComment);
                     this.ShowAddComment = false;
                 },
                 error => {

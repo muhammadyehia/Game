@@ -40,7 +40,23 @@
                                             <h3 class="panel-title">Comments</h3>
                                         </div>
                                         <div class="panel-body">
-                                            <comment-list [CommentsWithUser]='UsersCommentsWithRate' ></comment-list>
+                                            <div class=" no-comment col-md-5 col-md-offset-3" *ngIf="(FilterdCommentsWithUser.length)<=0">
+                                                No Comments Available
+                                            </div>
+                                            <div class="container-fluid" *ngFor="let item of FilterdCommentsWithUser">
+                                                <div class="row">
+                                                    <div class="col-sm-3 title">
+                                                        <ul>
+                                                            <li>
+                                                                {{item?.UserName}}
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-sm-9 body">
+                                                        {{item?.Comment}}
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div *ngIf="ShowAddComment">
                                                 <comment (onComment)='AddComment($event)'> </comment>
                                             </div>
