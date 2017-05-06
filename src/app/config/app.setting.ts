@@ -12,8 +12,10 @@ export class AppSetting {
   public static readonly SortParameterQeryString: string = "sortParameter";
   public static readonly ApiCallDateQeryString: string = "apiCallDate";
   public static readonly PageSize: number = 10;
-  public static readonly DefaultSortDirection: boolean = true;
-  public static readonly DefaultSortParameter: string = "alph"
+  public static readonly AscendingSortDirection: boolean = true;
+  public static readonly DescendingSortDirection: boolean = false;
+  public static readonly AlphabeticSortParameter: string = "alph"
+  public static readonly RateSortParameter: string = "rate"
 
 }
 

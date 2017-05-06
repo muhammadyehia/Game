@@ -6,9 +6,9 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
 @Injectable()
 export class GameService {
-    private ApiCallDate: string="";
+    private ApiCallDate: string;
     constructor(private _http: Http) {
-        
+        this.ApiCallDate="";
      }
     GetFilteredGamesCommentsAndRates(filter: IFilter): Observable<IFilteredGamesCommentsWithUser> {
         let headers = new Headers({ 'Content-Type': 'application/json' });

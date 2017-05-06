@@ -1,3 +1,27 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="col-md-4  form-group">
+                <label for="SortBy">Sort By:</label>
+                <select class="form-control" [(ngModel)]="SortBy" id="SortBy">
+                     <option [value]="AlphabeticSortParameter">Alphabetic</option>
+                     <option [value]="RateSortParameter">Rate</option>
+                </select>
+            </div>
+            <div class="col-md-4 form-group">
+                <label for="SortDir">Sort Direction:</label>
+                <select class="form-control" [(ngModel)]="SortDir" id="SortDir">
+                     <option  [value]= "AscendingSortDirection">Ascending</option>
+                     <option  [value]="DescendingSortDirection">Descending</option>
+                </select>
+            </div>
+            <div class="col-md-3 sort-button">
+                <button type="button" class="button" (click)="Sort()">Sort</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <game *ngFor="let item of FilteredGamesCommentsWithUser?.GamesCommentsWithUser" [GameCommentsWithUser]='item'>
 </game>
 

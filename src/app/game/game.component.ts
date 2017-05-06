@@ -37,8 +37,9 @@ export class GameComponent implements OnInit {
             result = this.GameCommentsWithUser.UsersCommentsWithRate.some((item: IUserCommentWithRate) => {
                 return (item.UserName === this._currentUser.Name && item.Comment !== "" && item.Comment !== null && item.Comment !== undefined);
             });
+               result=!result;
         }
-        this.ShowAddComment = !result;
+        this.ShowAddComment = result;
     }
     private AllowAddRate() {
 
@@ -47,8 +48,9 @@ export class GameComponent implements OnInit {
             result = this.GameCommentsWithUser.UsersCommentsWithRate.some((item: IUserCommentWithRate) => {
                 return item.UserName === this._currentUser.Name && item.Rate > 0;
             });
+            result=!result;
         }
-        this.AllowShowRate = !result;
+        this.AllowShowRate = result;
     }
     onRatingClicked(rate: number) {
         if (this._currentUser && rate > 0) {
