@@ -1,11 +1,24 @@
-<div class="login-page" (keydown)="OnPressEnter($event)">
-  <div class="form" >
+<div *ngIf="!ShowLoadImage">
+  <div class="login-page" (keydown)="OnPressEnter($event)" *ngIf="!ShowLoagInUser">
+    <div class="form">
       <input type="text" [(ngModel)]="UserName" name="username" id="username" autofocus placeholder="User Name" />
-       <div [hidden]="Submit" 
-             class="alert alert-danger">
-          User Name is required
-        </div>
-      
-      <button  (click)="Login()" >login</button>
+      <div [hidden]="Submit" class="alert alert-danger">
+        User Name is required
+      </div>
+
+      <button (click)="Login()">login</button>
+    </div>
   </div>
+  <div *ngIf="ShowLoagInUser">
+    <div class=" userInfo col-md-6 col-md-offset-1">
+      Welcome {{CurrentUser?.Name}}
+    </div>
+    <div class="col-md-2 logout-button">
+      <button type="button" class="button" (click)="Logout()">Log Out</button>
+    </div>
+
+  </div>
+</div>
+<div *ngIf="ShowLoadImage" class="reload-img">
+  <img src="../images/reload.gif" alt="Loading...">
 </div>

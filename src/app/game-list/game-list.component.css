@@ -18,3 +18,13 @@
   transition: all 0.3 ease;
   cursor: pointer;
 }
+.reload-img{
+    position: fixed;
+    top:0px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    vertical-align: middle;
+    text-align: center;
+    padding-top:200px; 
+}

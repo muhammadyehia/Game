@@ -19,10 +19,12 @@ export class GameListComponent implements OnInit {
     public DescendingSortDirection: boolean;
     public SortBy: string;
     public SortDir: boolean;
+    public ShowLoadImage:boolean;
     CurrentPage: number;
     TotalItems: number;
     PageSize: number;
     ngOnInit() {
+        this.ShowLoadImage=true;
         this.AlphabeticSortParameter = AppSetting.AlphabeticSortParameter;
         this.SortBy = this.AlphabeticSortParameter;
         this.RateSortParameter = AppSetting.RateSortParameter;
@@ -40,9 +42,11 @@ export class GameListComponent implements OnInit {
         this.GetFilteredGamesCommentsAndRates(filter);
     }
     public GetFilteredGamesCommentsAndRates(filter: IFilter) {
+        this.ShowLoadImage=true;
         this._gameService.GetFilteredGamesCommentsAndRates(filter).subscribe((filteredGamesCommentsWithUser: IFilteredGamesCommentsWithUser) => {
             this.FilteredGamesCommentsWithUser = filteredGamesCommentsWithUser;
             this.TotalItems = filteredGamesCommentsWithUser.Filter.TotalRecords;
+             this.ShowLoadImage=false;
         },
             error => {
                 console.log(error);
