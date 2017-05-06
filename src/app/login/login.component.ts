@@ -60,6 +60,8 @@ export class LoginComponent implements OnInit {
                 },
                 error => {
                     console.log(error);
+                    let link = ['/error'];
+                    this._router.navigate(link);
                 });
         }
 

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoginService, RateService, CommentService } from '../services/index'
 import { IGameCommentsWithUser, IUser, IRate, IUserCommentWithRate, IComment, IGame } from '../interfaces/index'
 @Component({
@@ -10,9 +11,9 @@ import { IGameCommentsWithUser, IUser, IRate, IUserCommentWithRate, IComment, IG
 })
 
 export class GameComponent implements OnInit {
-    constructor(private _loginService: LoginService, private _rateService: RateService, private _commentService: CommentService) { }
+    constructor(private _loginService: LoginService, private _rateService: RateService, private _commentService: CommentService, private _router: Router) { }
     @Input() GameCommentsWithUser: IGameCommentsWithUser;
-   public FilterdCommentsWithUser: IUserCommentWithRate[]
+    public FilterdCommentsWithUser: IUserCommentWithRate[]
     public Game: IGame;
     private _currentUser: IUser;
     public AllowShowComments: boolean = false;
@@ -37,7 +38,7 @@ export class GameComponent implements OnInit {
             result = this.GameCommentsWithUser.UsersCommentsWithRate.some((item: IUserCommentWithRate) => {
                 return (item.UserName === this._currentUser.Name && item.Comment !== "" && item.Comment !== null && item.Comment !== undefined);
             });
-               result=!result;
+            result = !result;
         }
         this.ShowAddComment = result;
     }
@@ -48,7 +49,7 @@ export class GameComponent implements OnInit {
             result = this.GameCommentsWithUser.UsersCommentsWithRate.some((item: IUserCommentWithRate) => {
                 return item.UserName === this._currentUser.Name && item.Rate > 0;
             });
-            result=!result;
+            result = !result;
         }
         this.AllowShowRate = result;
     }
@@ -67,6 +68,8 @@ export class GameComponent implements OnInit {
                 },
                 error => {
                     console.log(error);
+                    let link = ['/error'];
+                    this._router.navigate(link);
                 });
 
 
@@ -92,6 +95,8 @@ export class GameComponent implements OnInit {
                 },
                 error => {
                     console.log(error);
+                    let link = ['/error'];
+                    this._router.navigate(link);
                 });
 
 

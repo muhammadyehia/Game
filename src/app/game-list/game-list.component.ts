@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GameService } from '../services/index';
 import { AppSetting } from '../config/index'
+import { Router } from '@angular/router';
 import { IFilteredGamesCommentsWithUser, IFilter } from '../interfaces/index'
 @Component({
     moduleId: module.id,
@@ -11,7 +12,7 @@ import { IFilteredGamesCommentsWithUser, IFilter } from '../interfaces/index'
 })
 
 export class GameListComponent implements OnInit {
-    constructor(private _gameService: GameService) { }
+    constructor(private _gameService: GameService,private _router: Router) { }
     public FilteredGamesCommentsWithUser: IFilteredGamesCommentsWithUser;
     public AlphabeticSortParameter: string;
     public RateSortParameter: string;
@@ -19,12 +20,12 @@ export class GameListComponent implements OnInit {
     public DescendingSortDirection: boolean;
     public SortBy: string;
     public SortDir: boolean;
-    public ShowLoadImage:boolean;
+    public ShowLoadImage: boolean;
     CurrentPage: number;
     TotalItems: number;
     PageSize: number;
     ngOnInit() {
-        this.ShowLoadImage=true;
+        this.ShowLoadImage = true;
         this.AlphabeticSortParameter = AppSetting.AlphabeticSortParameter;
         this.SortBy = this.AlphabeticSortParameter;
         this.RateSortParameter = AppSetting.RateSortParameter;
@@ -42,21 +43,23 @@ export class GameListComponent implements OnInit {
         this.GetFilteredGamesCommentsAndRates(filter);
     }
     public GetFilteredGamesCommentsAndRates(filter: IFilter) {
-        this.ShowLoadImage=true;
+        this.ShowLoadImage = true;
         this._gameService.GetFilteredGamesCommentsAndRates(filter).subscribe((filteredGamesCommentsWithUser: IFilteredGamesCommentsWithUser) => {
             this.FilteredGamesCommentsWithUser = filteredGamesCommentsWithUser;
             this.TotalItems = filteredGamesCommentsWithUser.Filter.TotalRecords;
-             this.ShowLoadImage=false;
+            this.ShowLoadImage = false;
         },
             error => {
                 console.log(error);
+                let link = ['/error'];
+                this._router.navigate(link);
             }
         );
 
     }
 
     public Sort() {
-        this.CurrentPage=1;
+        this.CurrentPage = 1;
         let filter: IFilter = {
             CurrentPage: this.CurrentPage,
             PageSize: AppSetting.PageSize,

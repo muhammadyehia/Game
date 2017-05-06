@@ -1,0 +1,10 @@
+.errorInfo{
+    position: relative;
+    font-family: "Roboto", sans-serif;
+    font-size: xx-large;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    height: 50px;
+    text-align: center;
+    z-index: 1;
+    background: #FFFFFF;
+}

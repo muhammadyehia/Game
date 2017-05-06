@@ -14,8 +14,9 @@ export class AppSetting {
   public static readonly PageSize: number = 10;
   public static readonly AscendingSortDirection: boolean = true;
   public static readonly DescendingSortDirection: boolean = false;
-  public static readonly AlphabeticSortParameter: string = "alph"
-  public static readonly RateSortParameter: string = "rate"
-
+  public static readonly AlphabeticSortParameter: string = "alph";
+  public static readonly RateSortParameter: string = "rate";
+  public static readonly ErroMessage: string = "Something wrong happened";
+  public static readonly PageNotFoundMessage: string = "This page is not found";
 }
 
