@@ -11,7 +11,6 @@ export class AppSetting {
   public static readonly SortDirectionQeryString: string = "sortDirection";
   public static readonly SortParameterQeryString: string = "sortParameter";
   public static readonly ApiCallDateQeryString: string = "apiCallDate";
-  public static readonly LoginUserKey: string = "GreenTubeUserName";
   public static readonly PageSize: number = 10;
   public static readonly DefaultSortDirection: boolean = true;
   public static readonly DefaultSortParameter: string = "alph"

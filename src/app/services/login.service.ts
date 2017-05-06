@@ -25,21 +25,12 @@ export class LoginService {
     }
     public Logout() {
         this._currentUser = undefined;
-        if (typeof (Storage) !== "undefined") {
-            localStorage.removeItem(AppSetting.LoginUserKey);
-        }
     }
     private SetCurrentLoginUser(user: IUser) {
         this._currentUser = user;
-        if (typeof (Storage) !== "undefined") {
-            localStorage.setItem(AppSetting.LoginUserKey, JSON.stringify(user));
-        }
     }
     public GetCurrentLoginUser(): IUser {
-        if (typeof (Storage) !== "undefined") {
-            return <IUser>JSON.parse(localStorage.getItem(AppSetting.LoginUserKey));
-        }
-        else if (this._currentUser) {
+        if (this._currentUser) {
             return this._currentUser
         }
         else {
