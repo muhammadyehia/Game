@@ -5,5 +5,6 @@ export interface IFilter {
     TotalRecords?: number,
     SortDirection: boolean,
     SortParameter: string,
-    SkipRecords?: number
+    SkipRecords?: number,
+    ApiCallDate?:string
 }
