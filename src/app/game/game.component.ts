@@ -32,26 +32,25 @@ export class GameComponent implements OnInit {
         this.AllowShowComments = !this.AllowShowComments;
     }
     private AllowAddComment() {
-
-        let result: boolean = this._currentUser ? true : false;
-        if (result) {
-            result = this.GameCommentsWithUser.UsersCommentsWithRate.some((item: IUserCommentWithRate) => {
+        let isUserLogin: boolean = this._currentUser ? true : false;
+        let isUserHasComment: boolean = false;
+        if (isUserLogin) {
+            isUserHasComment = this.GameCommentsWithUser.UsersCommentsWithRate.some((item: IUserCommentWithRate) => {
                 return (item.UserName === this._currentUser.Name && item.Comment !== "" && item.Comment !== null && item.Comment !== undefined);
             });
-            result = !result;
         }
-        this.ShowAddComment = result;
+        this.ShowAddComment = isUserLogin && !isUserHasComment;
     }
     private AllowAddRate() {
 
-        let result: boolean = this._currentUser ? true : false;
-        if (result) {
-            result = this.GameCommentsWithUser.UsersCommentsWithRate.some((item: IUserCommentWithRate) => {
+        let isUserLogin: boolean = this._currentUser ? true : false;
+        let isUserHasRate: boolean = false;
+        if (isUserLogin) {
+            isUserHasRate = this.GameCommentsWithUser.UsersCommentsWithRate.some((item: IUserCommentWithRate) => {
                 return item.UserName === this._currentUser.Name && item.Rate > 0;
             });
-            result = !result;
         }
-        this.AllowShowRate = result;
+        this.AllowShowRate = isUserLogin && !isUserHasRate;
     }
     onRatingClicked(rate: number) {
         if (this._currentUser && rate > 0) {
@@ -77,7 +76,6 @@ export class GameComponent implements OnInit {
     }
 
     AddComment(comment: string) {
-        var ss = "";
         if (this._currentUser && comment) {
             let userComment: IComment = {
                 Comment: comment,

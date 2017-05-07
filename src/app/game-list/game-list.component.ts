@@ -14,6 +14,7 @@ import { IFilteredGamesCommentsWithUser, IFilter } from '../interfaces/index'
 export class GameListComponent implements OnInit {
     constructor(private _gameService: GameService,private _router: Router) { }
     public FilteredGamesCommentsWithUser: IFilteredGamesCommentsWithUser;
+    public NoGameAvailable:boolean;
     public AlphabeticSortParameter: string;
     public RateSortParameter: string;
     public AscendingSortDirection: boolean;
@@ -25,6 +26,7 @@ export class GameListComponent implements OnInit {
     TotalItems: number;
     PageSize: number;
     ngOnInit() {
+        this.NoGameAvailable=true;
         this.ShowLoadImage = true;
         this.AlphabeticSortParameter = AppSetting.AlphabeticSortParameter;
         this.SortBy = this.AlphabeticSortParameter;
@@ -47,6 +49,14 @@ export class GameListComponent implements OnInit {
         this._gameService.GetFilteredGamesCommentsAndRates(filter).subscribe((filteredGamesCommentsWithUser: IFilteredGamesCommentsWithUser) => {
             this.FilteredGamesCommentsWithUser = filteredGamesCommentsWithUser;
             this.TotalItems = filteredGamesCommentsWithUser.Filter.TotalRecords;
+            if(this.TotalItems>0)
+            {
+                this.NoGameAvailable=false;
+            }
+            else
+            {
+                this.NoGameAvailable=true;
+            }
             this.ShowLoadImage = false;
         },
             error => {
